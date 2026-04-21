@@ -204,6 +204,7 @@ section.secondary {
 table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed; /* equal column widths */
   background: white;
   margin-top: 30px;
   border-radius: 10px;
@@ -214,17 +215,32 @@ table {
 th,
 td {
   padding: 18px 20px;
-  text-align: left;
+  vertical-align: middle;
+  width: 50%; /* makes columns even */
 }
 
+/* Header styling */
 th {
   background: #272044;
   color: white;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 14px;
+  text-align: center; /* cleaner header alignment */
 }
 
+/* Left column (labels) */
+td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+
+/* Right column (values) */
+td:last-child {
+  text-align: center; /* 👈 makes text feel even */
+}
+
+/* Row styling */
 tr:nth-child(even) {
   background: #f7f7f7;
 }
@@ -232,6 +248,12 @@ tr:nth-child(even) {
 tr:hover {
   background: #eceaf6;
   transition: 0.2s ease;
+}
+
+/* Better readability */
+td {
+  line-height: 1.6;
+  word-wrap: break-word;
 }
 
 /* ================= MAIN ================= */
