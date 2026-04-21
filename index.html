@@ -29,6 +29,7 @@
       <!-- Header section with welcome message -->
         <!-- HERO -->
       <section class="hero">
+
         <div class="hero-content">
       <header>
         <h3>.TRAVEL.</h3>
@@ -40,6 +41,11 @@
       </header>
        </div>
       </section>
+
+      <section class="text-center fade-in">
+  <h2>Current Time in Paris</h2>
+  <p id="time"></p>
+</section>
       
       <!-- Main content section -->
       <main>
@@ -170,6 +176,8 @@
                 <h5>Address:</h5>
                 <p>226 Rue de Rivoli, 75001 Paris, France</p>
               </div>
+              <button class="like-btn">❤️ Like</button>
+              <p class="like-count">0 likes</p>
               <div class="card-footer">
                 <!-- Link to learn more about the café -->
                 <a
@@ -200,6 +208,8 @@
                 <h5>Address:</h5>
                 <p>18 Rue Norvins, 75018 Paris, France</p>
               </div>
+              <button class="like-btn">❤️ Like</button>
+              <p class="like-count">0 likes</p>
               <div class="card-footer">
                 <a
                   href="https://maps.app.goo.gl/DULRxcbsk2icZJUe9"
@@ -229,6 +239,8 @@
                 <h5>Address:</h5>
                 <p>15 Rue Lepic, 75018 Paris, France</p>
               </div>
+              <button class="like-btn">❤️ Like</button>
+              <p class="like-count">0 likes</p>
               <div class="card-footer">
                 <a
                   href="https://maps.app.goo.gl/QmmtiQqHXpHxpeuY9"
@@ -259,6 +271,17 @@
 <script async src="//www.instagram.com/embed.js"></script>
       </section>
       </main>
+
+      <section class="fade-in">
+  <h2 class="text-center">Map</h2>
+  <iframe
+    src="https://maps.google.com/maps?q=Paris&t=&z=13&output=embed"
+    width="100%"
+    height="400"
+    style="border:0;"
+    loading="lazy">
+  </iframe>
+</section>
 
        <!-- FOOTER -->
       <footer>
@@ -317,5 +340,58 @@
   </section>
 </footer>
     </div>
+<button id="topBtn">↑</button>
+
+<script>
+
+// ⬆️ SCROLL BUTTON
+const topBtn = document.getElementById("topBtn");
+
+window.onscroll = () => {
+  topBtn.style.display = window.scrollY > 300 ? "block" : "none";
+};
+
+topBtn.onclick = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+// ❤️ LIKE BUTTONS
+document.querySelectorAll(".like-btn").forEach(btn => {
+  btn.onclick = () => {
+    let count = btn.nextElementSibling;
+    let num = parseInt(count.innerText);
+
+    // update likes
+    count.innerText = (num + 1) + " likes";
+
+    // toggle style
+    btn.classList.add("liked");
+    btn.innerText = "❤️ Liked";
+  };
+});
+
+// 🕒 PARIS TIME
+function updateTime() {
+  const now = new Date();
+  const parisTime = now.toLocaleTimeString("en-GB", {
+    timeZone: "Europe/Paris"
+  });
+  document.getElementById("time").innerText = "Paris time: " + parisTime;
+}
+setInterval(updateTime, 1000);
+
+// ✨ FADE-IN
+const faders = document.querySelectorAll(".fade-in");
+
+window.addEventListener("scroll", () => {
+  faders.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < window.innerHeight - 50) {
+      el.classList.add("show");
+    }
+  });
+});
+
+</script>
   </body>
 </html>
