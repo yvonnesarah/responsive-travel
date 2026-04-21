@@ -23,6 +23,9 @@
     <title>Welcome to Paris</title>
   </head>
   <body>
+
+    <button id="themeToggle">🌙</button>
+
     <!-- Main content container -->
     <div class="container">
       
@@ -344,6 +347,17 @@
 
 <script>
 
+// THEME BUTTON
+  const themeBtn = document.getElementById("themeToggle");
+
+themeBtn.onclick = () => {
+  document.body.classList.toggle("dark");
+
+  themeBtn.textContent = document.body.classList.contains("dark")
+    ? "☀️"
+    : "🌙";
+};
+
 // ⬆️ SCROLL BUTTON
 const topBtn = document.getElementById("topBtn");
 
@@ -356,17 +370,25 @@ topBtn.onclick = () => {
 };
 
 // ❤️ LIKE BUTTONS
-document.querySelectorAll(".like-btn").forEach(btn => {
+document.querySelectorAll(".card").forEach((card, index) => {
+  const btn = card.querySelector(".like-btn");
+  const countEl = card.querySelector(".like-count");
+
+  // load saved likes
+  let savedLikes = localStorage.getItem("likes-" + index);
+  if (savedLikes) {
+    countEl.innerText = savedLikes + " likes";
+  }
+
   btn.onclick = () => {
-    let count = btn.nextElementSibling;
-    let num = parseInt(count.innerText);
+    let count = parseInt(countEl.innerText) || 0;
+    count++;
 
-    // update likes
-    count.innerText = (num + 1) + " likes";
-
-    // toggle style
+    countEl.innerText = count + " likes";
     btn.classList.add("liked");
     btn.innerText = "❤️ Liked";
+
+    localStorage.setItem("likes-" + index, count);
   };
 });
 
