@@ -371,6 +371,102 @@ footer a:hover {
   text-decoration: underline;
 }
 
+/* ================= THEME MODE TOGGLE================= */
+#themeToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #d6b25e; /* warm gold */
+  border-radius: 50%;
+  cursor: pointer;
+
+  background: #2a3a55; /* soft navy */
+  color: #f3e7c3; /* warm cream icon */
+
+  font-size: 18px;
+  z-index: 1000;
+
+  box-shadow: 0 10px 25px rgba(42, 58, 85, 0.25);
+  transition: all 0.3s ease;
+}
+
+#themeToggle:hover {
+  background: #d6b25e;
+  color: #2a3a55;
+  transform: scale(1.1);
+}
+/* ================= DARK MODE ================= */
+body.dark {
+  background: #0f1420;
+  color: #e9e3d4;
+}
+
+body.dark .card,
+body.dark table,
+body.dark main {
+  background: #1a2233;
+  color: #e9e3d4;
+}
+
+body.dark section.secondary {
+  background: #141b2a;
+}
+
+body.dark footer {
+  filter: brightness(0.95);
+}
+
+/* buttons inside dark mode */
+body.dark .btn {
+  background-color: #d6b25e;
+  color: #1a2233;
+}
+
+body.dark .btn:hover {
+  background-color: #e2c776;
+}
+
+/* like button in dark mode */
+body.dark .like-btn {
+  border-color: #d6b25e;
+  color: #e9e3d4;
+}
+
+body.dark .like-btn.liked {
+  background: #d6b25e;
+  color: #1a2233;
+}
+
+.like-count {
+  text-align: center;
+  margin: 8px 30px 15px;
+  font-size: 14px;
+  color: #1f2a44;
+  opacity: 0.7;
+}
+
+/* ⭐ DARK MODE FIX FOR LIKE TEXT */
+body.dark .like-count {
+  color: #ffffff; /* or #e9e3d4 if you prefer softer tone */
+  opacity: 0.85;
+}
+
+/* table tweaks */
+body.dark tr:nth-child(even) {
+  background: #121a2a;
+}
+
+body.dark tr:hover {
+  background: #1c2740;
+}
 /* ================= RESPONSIVE ================= */
 @media (max-width: 960px) {
   .hero {
