@@ -1,8 +1,9 @@
 /* ================= GLOBAL ================= */
 body {
   font-family: "Poppins", sans-serif;
-  background: #272044;
+  background: #f6f1ea; /* warm Paris cream */
   margin: 0;
+  color: #1f2a44; /* deep navy text */
 }
 
 .container {
@@ -25,7 +26,10 @@ html {
   justify-content: center;
   min-height: 100vh;
 
-  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+  background-image: linear-gradient(
+      rgba(31, 42, 68, 0.6),
+      rgba(31, 42, 68, 0.6)
+    ),
     url("../images/disneyland-paris.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -60,12 +64,13 @@ html {
   margin: 0;
 }
 
+/* GOLD BUTTON */
 .hero a {
   display: inline-block;
   margin-top: 32px;
   padding: 16px 32px;
-  background: white;
-  color: #272044;
+  background: #c8a24a;
+  color: #1f2a44;
   text-decoration: none;
   font-weight: 700;
   text-transform: uppercase;
@@ -75,7 +80,7 @@ html {
 }
 
 .hero a:hover {
-  background: #e6e6e6;
+  background: #b8923f;
   transform: scale(1.05);
 }
 
@@ -98,37 +103,22 @@ html {
   grid-template-columns: 1fr 2fr 2fr;
 }
 
-/* ================= IMAGES + FILTERS ================= */
+/* ================= IMAGES ================= */
 .img-responsive {
   width: 100%;
   display: block;
-  filter: brightness(0.9) contrast(1.1) saturate(0.9);
+  filter: brightness(0.95) contrast(1.05) saturate(0.95);
   transition: all 0.3s ease;
 }
 
 .img-responsive:hover {
-  filter: brightness(1) contrast(1.2) saturate(1.1);
+  filter: brightness(1) contrast(1.1) saturate(1.1);
   transform: scale(1.02);
-}
-
-/* ================= EMBEDS ================= */
-.embed {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-}
-
-.instagram-embeds {
-  margin: 30px 0;
-}
-
-.instagram-media {
-  width: 100% !important;
-  min-width: unset !important;
 }
 
 /* ================= CARDS ================= */
 .card {
-  background: white;
+  background: #ffffff;
   margin: 30px 0;
   display: flex;
   flex-direction: column;
@@ -136,12 +126,13 @@ html {
   border-radius: 10px;
   overflow: hidden;
 
+  box-shadow: 0 10px 25px rgba(31, 42, 68, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 15px 40px rgba(31, 42, 68, 0.15);
 }
 
 .card-header img {
@@ -149,7 +140,7 @@ html {
   height: 220px;
   object-fit: cover;
   display: block;
-  filter: grayscale(20%);
+  filter: grayscale(10%);
   transition: filter 0.3s ease;
 }
 
@@ -177,16 +168,15 @@ html {
   letter-spacing: 3px;
   text-transform: uppercase;
   padding: 16px;
-  background-color: #462cb3;
+  background-color: #1f2a44;
   text-decoration: none;
   border-radius: 5px;
   transition: 0.3s ease;
 }
 
 .btn:hover {
-  background-color: #2f1f80;
+  background-color: #2c3b5e;
   transform: scale(1.03);
-  transition: 0.3s ease;
 }
 
 /* ================= SECTION ================= */
@@ -197,66 +187,55 @@ section {
 }
 
 section.secondary {
-  background: #f8f8f8;
+  background: #fdfaf6;
 }
 
 /* ================= TABLE ================= */
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* equal column widths */
+  table-layout: fixed;
   background: white;
   margin-top: 30px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(31, 42, 68, 0.08);
 }
 
 th,
 td {
   padding: 18px 20px;
   vertical-align: middle;
-  width: 50%; /* makes columns even */
+  width: 50%;
 }
 
-/* Header styling */
 th {
-  background: #272044;
-  color: white;
+  background: #1f2a44;
+  color: #c8a24a;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-size: 14px;
-  text-align: center; /* cleaner header alignment */
+  text-align: center;
 }
 
-/* Left column (labels) */
 td:first-child {
   text-align: left;
   font-weight: 600;
 }
 
-/* Right column (values) */
 td:last-child {
-  text-align: center; /* 👈 makes text feel even */
+  text-align: center;
 }
 
-/* Row styling */
 tr:nth-child(even) {
-  background: #f7f7f7;
+  background: #f7f3ee;
 }
 
 tr:hover {
-  background: #eceaf6;
-  transition: 0.2s ease;
+  background: #f2e9dc;
 }
 
-/* Better readability */
-td {
-  line-height: 1.6;
-  word-wrap: break-word;
-}
-
-/* ================= MAIN ================= */
+/* ================= TEXT ================= */
 main {
   background-color: white;
 }
@@ -264,7 +243,7 @@ main {
 main h2 {
   font-size: 16px;
   letter-spacing: 5px;
-  opacity: 0.3;
+  opacity: 0.4;
   text-transform: uppercase;
 }
 
@@ -282,15 +261,78 @@ main h5 {
 
 main p {
   font-size: 16px;
+  opacity: 0.75;
+}
+
+.like-btn {
+  background: transparent;
+  border: 2px solid #c8a24a; /* gold accent */
+  color: #1f2a44; /* navy text */
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px 30px 0;
+  display: inline-block;
+}
+
+.like-btn:hover {
+  background: #c8a24a;
+  color: white;
+  transform: scale(1.05);
+}
+
+.like-btn:active {
+  transform: scale(0.95);
+}
+
+/* ACTIVE STATE (when clicked) */
+.like-btn.liked {
+  background: #1f2a44;
+  border-color: #1f2a44;
+  color: #ffffff;
+}
+
+.like-count {
+  text-align: center;
+  margin: 8px 30px 15px;
+  font-size: 14px;
+  color: #1f2a44;
   opacity: 0.7;
+}
+/* ================= SCROLL BUTTON ================= */
+#topBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  padding: 12px;
+  border-radius: 50%;
+  background: #1f2a44;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* ================= FADE ================= */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ================= FOOTER ================= */
 footer {
   color: white;
   background-image: linear-gradient(
-      rgba(39, 32, 68, 0.9),
-      rgba(39, 32, 68, 0.9)
+      rgba(31, 42, 68, 0.92),
+      rgba(31, 42, 68, 0.92)
     ),
     url("../images/paris-footer.png");
   background-repeat: no-repeat;
@@ -307,7 +349,7 @@ footer h3 {
 
 footer p {
   font-size: 16px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 footer ul {
@@ -319,9 +361,9 @@ footer li {
 }
 
 footer a {
-  color: white;
-  opacity: 0.7;
+  color: #c8a24a;
   text-decoration: none;
+  opacity: 0.9;
 }
 
 footer a:hover {
@@ -360,15 +402,8 @@ footer a:hover {
     display: none;
   }
 
-  .embed {
-    aspect-ratio: 16 / 9;
-  }
-
-  .grid-2-columns {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.grid-3-columns {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  .grid-2-columns,
+  .grid-3-columns {
+    grid-template-columns: 1fr;
   }
 }
