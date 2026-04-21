@@ -49,7 +49,23 @@
   <h2>Current Time in Paris</h2>
   <p id="time"></p>
 </section>
-      
+    
+<section class="weather-box">
+  <h2 class="text-center">Weather in Paris</h2>
+
+  <div id="weatherCard">
+    <div class="current-weather">
+      <img id="weatherIcon" src="" alt="Weather icon" />
+      <h3 id="temp"></h3>
+      <p id="feelsLike"></p>
+      <p id="wind"></p>
+    </div>
+
+    <h3>7-Day Forecast</h3>
+    <div id="forecast" class="forecast-grid"></div>
+  </div>
+</section>
+
       <!-- Main content section -->
       <main>
         
@@ -181,6 +197,14 @@
               </div>
               <button class="like-btn">❤️ Like</button>
               <p class="like-count">0 likes</p>
+              <div class="rating">
+              <span data-value="1">⭐</span>
+              <span data-value="2">⭐</span>
+              <span data-value="3">⭐</span>
+              <span data-value="4">⭐</span>
+              <span data-value="5">⭐</span>
+              </div>
+              <p class="rating-value">0/5</p>
               <div class="card-footer">
                 <!-- Link to learn more about the café -->
                 <a
@@ -213,6 +237,14 @@
               </div>
               <button class="like-btn">❤️ Like</button>
               <p class="like-count">0 likes</p>
+              <div class="rating">
+              <span data-value="1">⭐</span>
+              <span data-value="2">⭐</span>
+              <span data-value="3">⭐</span>
+              <span data-value="4">⭐</span>
+              <span data-value="5">⭐</span>
+              </div>
+              <p class="rating-value">0/5</p>
               <div class="card-footer">
                 <a
                   href="https://maps.app.goo.gl/DULRxcbsk2icZJUe9"
@@ -244,6 +276,14 @@
               </div>
               <button class="like-btn">❤️ Like</button>
               <p class="like-count">0 likes</p>
+              <div class="rating">
+              <span data-value="1">⭐</span>
+              <span data-value="2">⭐</span>
+              <span data-value="3">⭐</span>
+              <span data-value="4">⭐</span>
+              <span data-value="5">⭐</span>
+              </div>
+              <p class="rating-value">0/5</p>
               <div class="card-footer">
                 <a
                   href="https://maps.app.goo.gl/QmmtiQqHXpHxpeuY9"
@@ -274,6 +314,12 @@
 <script async src="//www.instagram.com/embed.js"></script>
       </section>
       </main>
+
+      <div class="text-center">
+  <button onclick="goTo('Eiffel Tower')">Eiffel Tower</button>
+  <button onclick="goTo('Louvre Museum')">Louvre</button>
+  <button onclick="goTo('Notre Dame Paris')">Notre-Dame</button>
+</div>
 
       <section class="fade-in">
   <h2 class="text-center">Map</h2>
@@ -348,14 +394,21 @@
 <script>
 
 // THEME BUTTON
-  const themeBtn = document.getElementById("themeToggle");
+const themeBtn = document.getElementById("themeToggle");
+
+// load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  themeBtn.textContent = "☀️";
+}
 
 themeBtn.onclick = () => {
   document.body.classList.toggle("dark");
 
-  themeBtn.textContent = document.body.classList.contains("dark")
-    ? "☀️"
-    : "🌙";
+  const isDark = document.body.classList.contains("dark");
+
+  themeBtn.textContent = isDark ? "☀️" : "🌙";
+  localStorage.setItem("theme", isDark ? "dark" : "light");
 };
 
 // ⬆️ SCROLL BUTTON
@@ -368,6 +421,59 @@ window.onscroll = () => {
 topBtn.onclick = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+function getWeatherIcon(code) {
+  if (code === 0) return "https://cdn-icons-png.flaticon.com/512/869/869869.png"; // sun
+  if (code <= 3) return "https://cdn-icons-png.flaticon.com/512/1163/1163624.png"; // clouds
+  if (code <= 48) return "https://cdn-icons-png.flaticon.com/512/4005/4005901.png"; // fog
+  return "https://cdn-icons-png.flaticon.com/512/3351/3351979.png"; // rain
+}
+
+async function getWeather() {
+  const res = await fetch(
+    "https://api.open-meteo.com/v1/forecast?latitude=48.85&longitude=2.35&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Europe%2FParis"
+  );
+
+  const data = await res.json();
+
+  const current = data.current_weather;
+
+  // 🌡️ CURRENT WEATHER
+  document.getElementById("temp").innerText =
+    `🌡️ ${current.temperature}°C`;
+
+  document.getElementById("feelsLike").innerText =
+    `🥶 Feels like: ${current.temperature - 1}°C`;
+
+  document.getElementById("wind").innerText =
+    `💨 Wind: ${current.windspeed} km/h`;
+
+  document.getElementById("weatherIcon").src =
+    getWeatherIcon(current.weathercode);
+
+  // 📅 7-DAY FORECAST
+  const forecast = document.getElementById("forecast");
+  forecast.innerHTML = "";
+
+  const days = data.daily.time;
+
+  days.forEach((day, i) => {
+    const card = document.createElement("div");
+    card.classList.add("forecast-card");
+
+    const icon = getWeatherIcon(data.daily.weathercode[i]);
+
+    card.innerHTML = `
+      <p>${new Date(day).toLocaleDateString("en-GB", { weekday: "short" })}</p>
+      <img src="${icon}" />
+      <p>${data.daily.temperature_2m_max[i]}° / ${data.daily.temperature_2m_min[i]}°</p>
+    `;
+
+    forecast.appendChild(card);
+  });
+}
+
+getWeather();
 
 // ❤️ LIKE BUTTONS
 document.querySelectorAll(".card").forEach((card, index) => {
@@ -391,6 +497,44 @@ document.querySelectorAll(".card").forEach((card, index) => {
     localStorage.setItem("likes-" + index, count);
   };
 });
+
+// ⭐ RATING STARS
+document.querySelectorAll(".card").forEach((card, index) => {
+  const stars = card.querySelectorAll(".rating span");
+  const output = card.querySelector(".rating-value");
+
+  let saved = localStorage.getItem("rating-" + index);
+
+  if (saved) {
+    output.innerText = saved + "/5";
+    highlightStars(stars, saved);
+  }
+
+  stars.forEach(star => {
+    star.onclick = () => {
+      const value = star.dataset.value;
+
+      output.innerText = value + "/5";
+      localStorage.setItem("rating-" + index, value);
+
+      highlightStars(stars, value);
+    };
+  });
+});
+
+function highlightStars(stars, value) {
+  stars.forEach(star => {
+    const isActive = star.dataset.value <= value;
+
+    star.style.opacity = "1";
+    star.classList.toggle("active", isActive);
+  });
+}
+
+function goTo(place) {
+  document.querySelector("iframe").src =
+    `https://maps.google.com/maps?q=${place}&t=&z=13&output=embed`;
+}
 
 // 🕒 PARIS TIME
 function updateTime() {
