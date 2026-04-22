@@ -140,8 +140,6 @@ This project makes use of the following resources:
 
 * Google Fonts – for typography and improved visual design
 
-* Paris imagery & inspiration – sourced from publicly available Instagram content and general travel references
-
 * Weather data from Open-Meteo
 
 * Maps from Google Maps
