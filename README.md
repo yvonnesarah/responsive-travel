@@ -116,6 +116,7 @@ Paris Map
 * “Feels like” temperature + comfort level indicator ✅
 * Interactive Google Maps integration ✅
 * Quick navigation to landmarks (Eiffel Tower, Louvre, Notre-Dame) ✅
+
 User interaction system:
 * Like system for café cards ✅
 * Star rating (1–5) system ✅
