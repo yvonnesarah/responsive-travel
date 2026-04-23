@@ -1,15 +1,17 @@
 # responsive-travel
 
 ## 📌 Description
-Responsive Travel is a modern, responsive travel website dedicated to the city of Paris 🇫🇷 — the “City of Love”.
+Responsive Travel is a modern, fully responsive travel web application focused on Paris 🇫🇷 — widely known as the “City of Love”.
 
-It showcases iconic landmarks, cultural insights, cafés, live weather, and an interactive gallery experience using embedded Instagram posts. The project focuses on clean UI design, responsiveness, and interactive front-end features.
+The application combines elegant UI design with interactive front-end features, allowing users to explore iconic landmarks, discover cafés, view live weather data, and browse a dynamic Instagram gallery.
+
+It emphasizes performance, usability, and real-time interactivity through features such as a live Paris clock, weather forecasting, user engagement systems (likes & ratings), and persistent UI preferences using localStorage.
 
 ## 🛠 Prerequisites
 * A modern web browser (Chrome, Firefox, Edge)
-* A valid Instagram account (optional, for testing embeds)
+* Optional: Instagram account for interacting with embedded posts
 * Public Instagram post links for embedding content
-* Internet connection (required for Instagram embeds and Google Fonts)
+* Internet connection (required for APIs, Google Fonts, maps, and Instagram embeds)
 
 ## 📋 Features
 * Modern and responsive design for multiple screen sizes
@@ -33,21 +35,26 @@ It showcases iconic landmarks, cultural insights, cafés, live weather, and an i
 The application is built with the following technologies:
 * HTML
 * CSS
-* Google Fonts
 * JavaScript (for Instagram embed functionality)
-* Instagram Embed API
 * Open-Meteo Weather API
+* Google Fonts
 * Google Maps Embed
+* Instagram Embed API
 
 ## 🚀 Installation
 No installation is required to use the app. It is hosted online and can be accessed via a web browser.
 
 ## 📚 Usage
-1. Open the website in a browser
-2. Explore Paris highlights and history
-3. View cafés and interact with likes & ratings
-4. Check live weather and time in Paris
-5. Browse Instagram gallery and map section
+1. Open the website live application in your browser
+2. Explore key sections about Paris including history and highlights
+3. View real-time Paris time and live weather conditions
+4. Browse cafés and interact with:
+* ❤️ Like system
+* ⭐ Star rating system
+5. Use the search bar to filter cafés dynamically
+6. Explore the Instagram gallery for visual content
+7. Navigate locations using the interactive map and quick landmark buttons
+8. Toggle between dark and light mode (preference is saved automatically)
 
 ## 🔗 Live Demo & Repository
 Application can be viewed here: 
@@ -130,6 +137,38 @@ User interaction system:
 * Modular and readable JavaScript functions ✅
 * Reusable UI components (cards, grids, buttons) ✅
 * Clean separation of HTML, CSS, and JavaScript ✅
+* Scroll progress indicator (reading progress bar) for enhanced UX ✅
+* Live Paris clock with automatic timezone conversion (Europe/Paris) ✅
+* Dynamic weather system with async API fetching (Open-Meteo) ✅
+* Custom weather logic (icon mapping + comfort score calculation) ✅
+* 7-day dynamic forecast rendering using DOM manipulation ✅
+* Loading state management (spinner while fetching API data) ✅
+* Toast notification system for real-time user feedback ✅
+
+Persistent user interactions using localStorage:
+* Likes system per café ✅
+* Star rating system per café ✅
+* Theme preference (dark/light mode) ✅
+* Saved map location state ✅
+
+Interactive search system with real-time filtering:
+* Filters by name, description, and address ✅
+* Dynamic “no results” state handling ✅
+* Adaptive UI mode during search (image emphasis) ✅
+
+Dynamic Google Maps integration:
+* Quick navigation buttons for landmarks ✅
+* Map updates without page reload ✅
+
+Event-driven architecture:
+* Scroll-based triggers (progress bar, animations, button visibility) ✅
+* Input-based filtering system ✅
+* Click-based UI state updates (likes, ratings, navigation) ✅
+
+Performance-focused design:
+* Minimal external dependencies ✅
+* Efficient DOM updates and re-rendering ✅
+* Asynchronous data handling with async/await ✅
 
 ## 👥 Credit
 Designed and developed by Yvonne Adedeji.
