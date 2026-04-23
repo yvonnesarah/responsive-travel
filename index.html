@@ -1,35 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Meta tags to ensure proper rendering and responsiveness -->
+<!-- =========================================================
+         META CONFIGURATION
+========================================================= -->
+
+<!-- Character encoding -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<!-- Responsive design for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Preconnect to external font resources to speed up page load -->
+<!-- =========================================================
+         FONTS (GOOGLE FONTS)
+========================================================= -->
+
+<!-- Preconnect improves loading performance for external fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <!-- Link to Google Fonts stylesheet for Poppins font family -->
+<!-- Poppins font family from Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
     
-    <!-- External CSS stylesheet -->
+<!-- =========================================================
+         STYLESHEET
+========================================================= -->
+
+<!-- External CSS stylesheet -->
     <link rel="stylesheet" href="assets/css/styles.css">
     
-    <!-- Title of the webpage -->
+<!-- Page title -->
     <title>Welcome to Paris</title>
   </head>
   <body>
 
-    <!-- PROGRESS BAR -->
+<!-- =========================================================
+         PROGRESS BAR (SCROLL INDICATOR)
+========================================================= -->
 <div id="progressBar"></div>
 
-<!-- NAVBAR -->
+<!-- =========================================================
+         NAVIGATION BAR
+========================================================= -->
 <nav class="navbar">
+<!-- Site title -->
   <h3>Paris Guide</h3>
+<!-- Navigation links -->
   <ul>
     <li><a href="#">Home</a></li>
     <li><a href="#more">About</a></li>
@@ -37,16 +57,19 @@
     <li><a href="#map">Map</a></li>
   </ul>
 
-  
     <!-- Theme toggle button (dark/light mode) -->
     <button id="themeToggle">🌙</button>
 </nav>
 
+<!-- =========================================================
+         MAIN PAGE WRAPPER
+========================================================= -->
 
-    <!-- Main page container -->
     <div class="container">
       
-          <!-- HERO SECTION: Intro banner -->
+<!-- =========================================================
+           HERO SECTION
+========================================================= -->
       <section class="hero">
 
         <div class="hero-content">
@@ -64,59 +87,74 @@
        </div>
       </section>
 
-      <!-- CURRENT TIME SECTION -->
+<!-- =========================================================
+           CURRENT TIME SECTION
+ ========================================================= -->
       <section class="text-center fade-in">
   <h2>Current Time in Paris</h2>
   <p id="time"></p>
 </section>
     
-  
-      <!-- WEATHER SECTION -->
+
+<!-- =========================================================
+           WEATHER SECTION
+========================================================= -->
 <section class="weather-box">
   <h2 class="text-center">Weather in Paris</h2>
 
+<!-- Loading spinner -->
   <div id="loader">
   <div class="spinner"></div>
   <p>Loading Paris weather...</p>
 </div>
 
+ <!-- Weather content card -->
   <div id="weatherCard">
-    <!-- Current weather display -->
+  <!-- Current weather details -->
     <div class="current-weather">
        <!-- Weather icon -->
       <img id="weatherIcon" src="" alt="Weather icon" />
         <!-- Temperature -->
       <h3 id="temp"></h3>
 
-       <!-- Weather details -->
+     <!-- Weather conditions -->
       <p id="feelsLike"></p>
       <p id="wind"></p>
 
-       <!-- Additional weather data -->
+       <!-- Additional weather info -->
       <p id="humidity"></p>
       <p id="sunrise"></p>
       <p id="sunset"></p>
       <p id="comfort"></p>
 
-  <!-- 7-day forecast -->
+  <!-- 7-day Forecast section -->
     <h3>7-Day Forecast</h3>
     <div id="forecast" class="forecast-grid"></div>
   </div>
 </section>
 
-       <!-- MAIN CONTENT SECTION -->
+
+<!-- =========================================================
+           MAIN CONTENT SECTION
+========================================================= -->
+
       <main>
+
+<!-- =====================================================
+             WHY PARIS SECTION
+ ===================================================== -->
         
          <!-- GRID: Image + Text section -->
         <section class="grid grid-2-columns">
           <div>
-            <!-- Paris building image -->
+            <!-- Image column -->
             <img
               src="assets/images/building.png"
               alt="Paris Building"
               class="img-responsive"
             />
           </div>
+          <!-- Text column -->
           <div>
               <!-- Anchor target for Learn More link -->
             <a name="more"></a>
@@ -138,7 +176,9 @@
           </div>
         </section>
 
-        <!-- PARIS FACTS TABLE SECTION-->
+<!-- =====================================================
+             PARIS FACTS TABLE SECTION
+===================================================== -->
   <section> 
   <h2 class="text-center">Paris Quick Facts</h2>
   <table>
@@ -205,11 +245,13 @@
   </table>
 </section>
 
-<!-- SEARCH -->
+<!-- =====================================================
+             CAFÉ SEARCH SECTION
+ ===================================================== -->
 <section id="cafes" class="secondary">
   <h2 class="text-center">CAFÉS</h2>
 
-  <!-- Search input -->
+     <!-- Search bar -->
   <div class="search-wrapper">
     <input
       type="text"
@@ -219,7 +261,7 @@
     />
   </div>
 
-  <h3 class="text-center">My favorite cafés in Paris</h3>
+  <h3 class="text-center">My favourite cafés in Paris</h3>
 
   <!-- No results message  -->
   <p id="noResults" style="display:none; text-align:center; margin-top:20px;">
@@ -351,7 +393,9 @@
           </div>
         </section>
 
-       <!-- INSTAGRAM GALLERY EMBEDS SECTION -->
+ <!-- =====================================================
+             INSTAGRAM GALLERY EMBEDS SECTION
+===================================================== -->
          <section>
           <h2 class="text-center">Gallery</h2>
           <h3 class="text-center">My photos from Paris</h3>
@@ -370,14 +414,18 @@
       </section>
       </main>
 
-      <!-- QUICK NAV BUTTONS -->
+<!-- =========================================================
+           QUICK NAV BUTTONS
+========================================================= -->
       <div class="text-center">
   <button onclick="goTo('Eiffel Tower')">Eiffel Tower</button>
   <button onclick="goTo('Louvre Museum')">Louvre</button>
   <button onclick="goTo('Notre Dame Paris')">Notre-Dame</button>
 </div>
 
-      <!-- MAP SECTION -->
+<!-- =========================================================
+           MAP SECTION
+========================================================= -->
       <section id="map"  class="fade-in">
       <h2 class="text-center">Map</h2>
       <iframe
@@ -389,11 +437,15 @@
     </iframe>
     </section>
 
-       <!-- FOOTER -->
+<!-- =========================================================
+           FOOTER
+========================================================= -->
       <footer>
   <!-- Footer Section with Grid Layout -->
   <section class="grid grid-3-columns-with-first-narrow">
-    
+
+     <!-- Useful links -->
+
     <!-- First Column: Links about Paris -->
     <div>
       <h3>More about Paris</h3>
@@ -419,7 +471,7 @@
       </ul>
     </div>
     
-    <!-- Second Column: About SECTION -->
+    <!-- Second Column: About ME SECTION -->
     <div>
       <h3>About me</h3>
       <p>
@@ -428,7 +480,7 @@
       </p>
     </div>
     
-    <!-- Third Column: Website info -->
+    <!-- Third Column: Project Website info -->
     <div>
       <h3>About this website</h3>
       <p>
@@ -447,7 +499,7 @@
 </footer>
     </div>
 
-    <!-- TOAST -->
+     <!-- Toast notification -->
 <div id="toast">Added to favourites ❤️</div>
 
     <!-- Scroll to top button -->
