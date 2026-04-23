@@ -189,7 +189,7 @@ body.dark .no-results {
 }
 
 /* LOADER */
-/* ================= LOADER (UPGRADED) ================= */
+/* ================= LOADER ================= */
 #loader {
   display: flex;
   flex-direction: column;
@@ -245,7 +245,6 @@ body.dark .spinner {
 }
 
 /* TOAST */
-/* ================= TOAST (UPGRADED) ================= */
 #toast {
   position: fixed;
   bottom: 30px;
@@ -532,6 +531,7 @@ main p {
   opacity: 0.75;
 }
 
+/* ================= LIKE BUTTON ================= */
 .like-btn {
   background: transparent;
   border: 2px solid #c8a24a; /* gold accent */
