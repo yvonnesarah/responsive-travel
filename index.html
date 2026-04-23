@@ -24,8 +24,24 @@
   </head>
   <body>
 
+    <!-- PROGRESS BAR -->
+<div id="progressBar"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <h3>Paris Guide</h3>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#more">About</a></li>
+    <li><a href="#cafes">Cafés</a></li>
+    <li><a href="#map">Map</a></li>
+  </ul>
+
+  
     <!-- Theme toggle button (dark/light mode) -->
     <button id="themeToggle">🌙</button>
+</nav>
+
 
     <!-- Main page container -->
     <div class="container">
@@ -59,6 +75,11 @@
 <section class="weather-box">
   <h2 class="text-center">Weather in Paris</h2>
 
+  <div id="loader">
+  <div class="spinner"></div>
+  <p>Loading Paris weather...</p>
+</div>
+
   <div id="weatherCard">
     <!-- Current weather display -->
     <div class="current-weather">
@@ -86,10 +107,10 @@
        <!-- MAIN CONTENT SECTION -->
       <main>
         
-         <!-- GRID: Image + Text section -->>
+         <!-- GRID: Image + Text section -->
         <section class="grid grid-2-columns">
           <div>
-            < <!-- Paris building image -->
+            <!-- Paris building image -->
             <img
               src="assets/images/building.png"
               alt="Paris Building"
@@ -185,10 +206,12 @@
 </section>
 
 
-        <!-- CAFÉ CARDS SECTION -->
-        <!-- Secondary section showcasing popular cafés in Paris -->
-        <section class="secondary">
+       <!-- SEARCH -->
+          <section id="cafes" class="secondary">
           <h2 class="text-center">CAFÉS</h2>
+          <div class="search-wrapper">
+           <input type="text" id="search" placeholder="🔍 Search cafés..." />
+          </div>
           <h3 class="text-center">My favorite cafés in Paris</h3>
 
           <!-- Café cards grid -->
@@ -411,6 +434,9 @@
   </section>
 </footer>
     </div>
+
+    <!-- TOAST -->
+<div id="toast">Added to favourites ❤️</div>
 
     <!-- Scroll to top button -->
 <button id="topBtn">↑</button>
