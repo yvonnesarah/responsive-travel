@@ -1,32 +1,37 @@
 // =========================
-// 🌗 THEME TOGGLE
+// 🌗 THEME TOGGLE (dark/light mode with persistence)
 // =========================
 const themeBtn = document.getElementById("themeToggle");
 
+// Apply saved theme on load
 if (localStorage.getItem("theme") === "dark") {
   document.body.classList.add("dark");
   themeBtn.textContent = "☀️";
 }
 
+// Toggle theme on button click
 themeBtn.onclick = () => {
   document.body.classList.toggle("dark");
 
   const isDark = document.body.classList.contains("dark");
   themeBtn.textContent = isDark ? "☀️" : "🌙";
 
+  // Save preference
   localStorage.setItem("theme", isDark ? "dark" : "light");
 };
 
 
 // =========================
-// ⬆️ SCROLL TO TOP
+// ⬆️ SCROLL TO TOP BUTTON
 // =========================
 const topBtn = document.getElementById("topBtn");
 
+// Show button after scrolling down
 window.addEventListener("scroll", () => {
   topBtn.style.display = window.scrollY > 300 ? "block" : "none";
 });
 
+// Smooth scroll to top
 topBtn.onclick = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
@@ -44,7 +49,7 @@ window.addEventListener("scroll", () => {
 
 
 // =========================
-// 🕒 PARIS LIVE TIME
+// 🕒 PARIS LIVE TIME CLOCK
 // =========================
 function updateTime() {
   const now = new Date();
@@ -57,26 +62,30 @@ function updateTime() {
     "Paris time: " + parisTime;
 }
 
+// Update every second
 setInterval(updateTime, 1000);
 
 
 // =========================
-// 🌤️ WEATHER HELPERS
+// 🌤️ WEATHER HELPERS (icons + comfort score)
 // =========================
+
+// Return weather icon based on weather code
 function getWeatherIcon(code) {
-  if (code === 0) return "https://cdn-icons-png.flaticon.com/512/869/869869.png";
-  if (code <= 3) return "https://cdn-icons-png.flaticon.com/512/1163/1163624.png";
-  if (code <= 48) return "https://cdn-icons-png.flaticon.com/512/4005/4005901.png";
-  return "https://cdn-icons-png.flaticon.com/512/3351/3351979.png";
+  if (code === 0) return "https://cdn-icons-png.flaticon.com/512/869/869869.png"; // clear
+  if (code <= 3) return "https://cdn-icons-png.flaticon.com/512/1163/1163624.png"; // cloudy
+  if (code <= 48) return "https://cdn-icons-png.flaticon.com/512/4005/4005901.png"; // fog
+  return "https://cdn-icons-png.flaticon.com/512/3351/3351979.png"; // rain/snow
 }
 
+// Simple comfort score based on humidity + wind
 function getComfortScore(humidity, wind) {
   return Math.max(0, Math.round(100 - (humidity * 0.5 + wind)));
 }
 
 
 // =========================
-// 🌦️ WEATHER FETCH
+// 🌦️ WEATHER FETCH (Open-Meteo API)
 // =========================
 const loader = document.getElementById("loader");
 
@@ -84,6 +93,7 @@ async function getWeather() {
   try {
     loader.style.display = "block";
 
+    // Fetch weather data for Paris
     const res = await fetch(
       "https://api.open-meteo.com/v1/forecast?" +
       "latitude=48.85&longitude=2.35" +
@@ -102,6 +112,7 @@ async function getWeather() {
 
     const comfort = getComfortScore(humidity, wind);
 
+    // Current weather UI updates
     document.getElementById("temp").innerText =
       `🌡️ ${current.temperature}°C`;
 
@@ -126,6 +137,7 @@ async function getWeather() {
     document.getElementById("weatherIcon").src =
       getWeatherIcon(current.weathercode);
 
+    // Forecast rendering
     const forecast = document.getElementById("forecast");
     forecast.innerHTML = "";
 
@@ -149,14 +161,16 @@ async function getWeather() {
   }
 }
 
+// Initial weather load
 getWeather();
 
 
 // =========================
-// 🔔 TOAST SYSTEM (UPDATED)
+// 🔔 TOAST NOTIFICATION SYSTEM
 // =========================
 const toast = document.getElementById("toast");
 
+// Show temporary popup message
 function showToast(message) {
   if (!toast) return;
 
@@ -170,17 +184,19 @@ function showToast(message) {
 
 
 // =========================
-// ❤️ LIKE SYSTEM (WITH TOAST)
+// ❤️ LIKE SYSTEM (with localStorage + toast)
 // =========================
 document.querySelectorAll(".card").forEach((card, index) => {
   const btn = card.querySelector(".like-btn");
   const countEl = card.querySelector(".like-count");
 
+  // Load saved likes
   let savedLikes = localStorage.getItem("likes-" + index);
   if (savedLikes) {
     countEl.innerText = savedLikes + " likes";
   }
 
+  // Like button click
   btn.onclick = () => {
     let count = parseInt(countEl.innerText) || 0;
     count++;
@@ -198,7 +214,7 @@ document.querySelectorAll(".card").forEach((card, index) => {
 
 
 // =========================
-// ⭐ STAR RATING (WITH TOAST)
+// ⭐ STAR RATING SYSTEM (with persistence + toast)
 // =========================
 document.querySelectorAll(".card").forEach((card, index) => {
   const stars = card.querySelectorAll(".rating span");
@@ -226,6 +242,7 @@ document.querySelectorAll(".card").forEach((card, index) => {
   });
 });
 
+// Highlight stars up to selected value
 function highlightStars(stars, value) {
   stars.forEach(star => {
     const isActive = star.dataset.value <= value;
@@ -233,10 +250,10 @@ function highlightStars(stars, value) {
   });
 }
 
-// =========================
-// 🔍 SEARCH FILTER + IMAGE TOGGLE
-// =========================
 
+// =========================
+// 🔍 SEARCH FILTER + IMAGE TOGGLE MODE
+// =========================
 const searchInput = document.getElementById("search");
 const cafeSection = document.getElementById("cafes");
 const cafeCards = document.querySelectorAll("#cafes .card");
@@ -247,7 +264,7 @@ if (searchInput) {
     const query = e.target.value.trim().toLowerCase();
     let visibleCount = 0;
 
-    // 👉 toggle image mode
+    // Toggle image-heavy mode when searching
     if (query !== "") {
       cafeSection.classList.add("searching");
     } else {
@@ -264,21 +281,18 @@ if (searchInput) {
         description.includes(query) ||
         address.includes(query);
 
-      if (match) {
-        card.style.display = "flex";
-        visibleCount++;
-      } else {
-        card.style.display = "none";
-      }
+      card.style.display = match ? "flex" : "none";
+
+      if (match) visibleCount++;
     });
 
-    // 👉 no results message
+    // Show "no results" message
     if (noResults) {
       noResults.style.display =
         visibleCount === 0 && query !== "" ? "block" : "none";
     }
 
-    // 👉 reset state
+    // Reset when search cleared
     if (query === "") {
       cafeCards.forEach((card) => (card.style.display = "flex"));
       if (noResults) noResults.style.display = "none";
@@ -286,8 +300,9 @@ if (searchInput) {
   });
 }
 
+
 // =========================
-// 🗺️ MAP LOCATION SAVE
+// 🗺️ MAP LOCATION HANDLER
 // =========================
 function goTo(place) {
   const url = `https://maps.google.com/maps?q=${place}&output=embed`;
@@ -296,12 +311,13 @@ function goTo(place) {
   localStorage.setItem("map-location", place);
 }
 
+// Restore last saved location
 const savedPlace = localStorage.getItem("map-location");
 if (savedPlace) goTo(savedPlace);
 
 
 // =========================
-// ✨ FADE-IN ON SCROLL
+// ✨ FADE-IN ON SCROLL ANIMATION
 // =========================
 const faders = document.querySelectorAll(".fade-in");
 
