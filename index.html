@@ -205,14 +205,26 @@
   </table>
 </section>
 
+<!-- SEARCH -->
+<section id="cafes" class="secondary">
+  <h2 class="text-center">CAFÉS</h2>
 
-       <!-- SEARCH -->
-          <section id="cafes" class="secondary">
-          <h2 class="text-center">CAFÉS</h2>
-          <div class="search-wrapper">
-           <input type="text" id="search" placeholder="🔍 Search cafés..." />
-          </div>
-          <h3 class="text-center">My favorite cafés in Paris</h3>
+  <!-- Search input -->
+  <div class="search-wrapper">
+    <input
+      type="text"
+      id="search"
+      placeholder="🔍 Search cafés..."
+      autocomplete="off"
+    />
+  </div>
+
+  <h3 class="text-center">My favorite cafés in Paris</h3>
+
+  <!-- No results message  -->
+  <p id="noResults" style="display:none; text-align:center; margin-top:20px;">
+    No cafés found ☕
+  </p>
 
           <!-- Café cards grid -->
           <div class="grid grid-3-columns">
@@ -366,7 +378,7 @@
 </div>
 
       <!-- MAP SECTION -->
-      <section class="fade-in">
+      <section id="map"  class="fade-in">
       <h2 class="text-center">Map</h2>
       <iframe
     src="https://maps.google.com/maps?q=Paris&t=&z=13&output=embed"
