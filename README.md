@@ -58,9 +58,8 @@ No installation is required to use the app. It is hosted online and can be acces
 
 ## 🔗 Live Demo & Repository
 Application can be viewed here: 
-* [Live](https://ya-responsive-travel.netlify.app/)
-
-* [Repository](https://github.com/yvonnesarah/responsive-travel)
+* 🌐 Live: https://ya-responsive-travel.netlify.app/
+* 💻 Repository: https://github.com/yvonnesarah/responsive-travel
 
 ## 🖼 Screenshot(S)
 Before Design
