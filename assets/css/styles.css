@@ -152,6 +152,42 @@ body.dark #search:focus {
   background: #141b2a;
 }
 
+.no-results {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #1f2a44;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+/* ================= SEARCH MODE (HIDE IMAGES) ================= */
+
+#cafes.searching .card-header {
+  display: none;
+}
+
+/* smooth hide animation for cards */
+.card {
+  transition: all 0.3s ease;
+}
+
+/* ensures grid doesn't break when filtering */
+.grid {
+  align-items: stretch;
+}
+
+/* optional: nicer input spacing fix */
+.search-wrapper {
+  margin-bottom: 10px;
+}
+
+/* DARK MODE */
+body.dark .no-results {
+  color: #e9e3d4;
+}
+
 /* LOADER */
 /* ================= LOADER (UPGRADED) ================= */
 #loader {
