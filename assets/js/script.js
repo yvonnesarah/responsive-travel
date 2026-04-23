@@ -233,23 +233,58 @@ function highlightStars(stars, value) {
   });
 }
 
+// =========================
+// 🔍 SEARCH FILTER + IMAGE TOGGLE
+// =========================
 
-// =========================
-// 🔍 SEARCH FILTER
-// =========================
 const searchInput = document.getElementById("search");
+const cafeSection = document.getElementById("cafes");
+const cafeCards = document.querySelectorAll("#cafes .card");
+const noResults = document.getElementById("noResults");
 
 if (searchInput) {
-  searchInput.addEventListener("input", e => {
-    const val = e.target.value.toLowerCase();
+  searchInput.addEventListener("input", (e) => {
+    const query = e.target.value.trim().toLowerCase();
+    let visibleCount = 0;
 
-    document.querySelectorAll(".card").forEach(card => {
-      card.style.display =
-        card.innerText.toLowerCase().includes(val) ? "block" : "none";
+    // 👉 toggle image mode
+    if (query !== "") {
+      cafeSection.classList.add("searching");
+    } else {
+      cafeSection.classList.remove("searching");
+    }
+
+    cafeCards.forEach((card) => {
+      const title = card.querySelector("h4")?.innerText.toLowerCase() || "";
+      const description = card.querySelector(".card-body p")?.innerText.toLowerCase() || "";
+      const address = card.querySelector(".card-body h5 + p")?.innerText.toLowerCase() || "";
+
+      const match =
+        title.includes(query) ||
+        description.includes(query) ||
+        address.includes(query);
+
+      if (match) {
+        card.style.display = "flex";
+        visibleCount++;
+      } else {
+        card.style.display = "none";
+      }
     });
+
+    // 👉 no results message
+    if (noResults) {
+      noResults.style.display =
+        visibleCount === 0 && query !== "" ? "block" : "none";
+    }
+
+    // 👉 reset state
+    if (query === "") {
+      cafeCards.forEach((card) => (card.style.display = "flex"));
+      if (noResults) noResults.style.display = "none";
+    }
   });
 }
-
 
 // =========================
 // 🗺️ MAP LOCATION SAVE
