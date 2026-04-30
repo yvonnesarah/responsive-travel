@@ -169,6 +169,28 @@ Performance-focused design:
 * Efficient DOM updates and re-rendering ✅
 * Asynchronous data handling with async/await ✅
 
+## 🧠 Challenges & Learnings
+🚧 Challenges Faced
+
+1. Integrating multiple external APIs (Open-Meteo, Google Maps, Instagram embeds) while maintaining performance and fast load times.
+2. Handling asynchronous data fetching without causing UI blocking or layout shifts.
+3. Ensuring full responsiveness across mobile, tablet, and desktop devices with consistent layout behavior.
+4. Managing dynamic UI states such as likes, ratings, theme switching, and search filtering without framework support.
+5. Implementing reliable localStorage persistence while keeping data synchronized across sessions.
+6. Handling inconsistent Instagram embed loading behavior and ensuring fallback stability.
+7. Optimizing DOM updates to avoid unnecessary re-rendering in a vanilla JavaScript environment.
+
+📚 Key Learnings
+
+1. Strengthened understanding of vanilla JavaScript architecture and DOM manipulation patterns.
+2. Improved ability to structure scalable front-end code without relying on frameworks. 
+3. Gained practical experience working with real-time APIs and handling asynchronous workflows using async/await.
+4. Learned how to design user-centric UI systems with persistent state (likes, ratings, theme preferences).
+5. Developed better strategies for responsive design, especially for grid-based layouts and media-heavy sections.
+6. Understood the importance of performance optimization, including lazy loading considerations and minimal dependency usage.
+7. Improved debugging skills when working with third-party integrations (Google Maps, Instagram embeds, weather API).
+8. Reinforced best practices for separation of concerns across HTML, CSS, and JavaScript.
+
 ## 👥 Credit
 Designed and developed by Yvonne Adedeji.
 
